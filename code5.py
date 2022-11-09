@@ -1,7 +1,8 @@
-import time 
+import threading
+import time
 
 def main():
-    
+
     def task(i):
         print(f"Task {i} started")
         time.sleep(1)
@@ -9,7 +10,16 @@ def main():
 
     start = time.perf_counter()
 
-    task(1)
+    T = []
+
+    for i in range(100):
+        T.append(threading.Thread(target=task, args=(i,)))
+
+    for i in range (len(T)):
+        T[i].start()
+
+    for i in range (len(T)):
+        T[i].join()
 
     end = time.perf_counter()
 

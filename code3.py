@@ -1,7 +1,8 @@
-import time 
+import threading
+import time
 
 def main():
-    
+
     def task(i):
         print(f"Task {i} started")
         time.sleep(1)
@@ -9,7 +10,9 @@ def main():
 
     start = time.perf_counter()
 
-    task(1)
+    t1 = threading.Thread(target=task, args=(1,))
+    t1.start()
+    t1.join()
 
     end = time.perf_counter()
 
