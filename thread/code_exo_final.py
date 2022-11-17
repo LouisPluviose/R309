@@ -3,16 +3,6 @@ import multiprocessing
 import threading
 import concurrent.futures
 import requests
-import argparse
-
-def argument():
-    parser = argparse.ArgumentParser(description="Download images from the web")
-    nb = parser.add_argument("--nb", type=int, default=2, help="Number of images to download")
-    args = parser.parse_args()
-    print(args.print_string)
-
-def exception():
-    pass
 
 def main():
 
